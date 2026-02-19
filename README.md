@@ -1,44 +1,43 @@
-Google Cloud Infrastructure Deployment Lab
-🎯 Objective
+# ☁️ Google Cloud Infrastructure Deployment Lab
+### *Building with Precision, Accelerating with AI*
 
+This lab is designed to bridge the gap between foundational cloud networking and modern AI-driven operations. You will build a real-world web server environment from scratch, first manually to understand the "why," and then using **Gemini CLI** to experience the "how" of AI acceleration.
+
+---
+
+## 🎯 Objective
 This lab guides you through deploying a complete web server infrastructure on Google Cloud, including:
 
-Custom VPC
+* **Custom VPC:** For isolated network control.
+* **Tiered Subnets:** Differentiating between Public and Private traffic.
+* **Security Layers:** Firewall rules to permit web traffic.
+* **Compute Engine VM:** Highly available virtual instances.
+* **Automated Nginx Installation:** Using Startup Scripts.
+* **Infrastructure Verification:** Using `curl` to confirm deployment.
 
-Public and Private Subnets
+---
 
-Firewall Rule
+## 🏗 Architecture Overview
+The traffic flow follows this logical path:
 
-Compute Engine VM
+**Internet** ➔ **Firewall** (Port 80) ➔ **Public Subnet** ➔ **VM (Ubuntu)** ➔ **Nginx** ➔ **Response: "Hello from ds!"**
 
-Automated Nginx Installation
+> **Mental Model:** Think of the **VPC** as your "Building," **Subnets** as "Rooms," and the **Firewall** as the "Security Guard" at the door.
 
-Infrastructure verification using curl
+---
 
-You will deploy the infrastructure in two ways:
+## 🧠 Prerequisites
+Before starting, ensure you have:
+* [ ] A **Google Cloud Project**.
+* [ ] **gcloud SDK** installed and initialized: `gcloud init`.
+* [ ] **Gemini AI Extension** installed for the CLI.
+* [ ] **Compute Engine API** enabled.
 
-Manual deployment using gcloud
+---
 
-Automated deployment using Gemini CLI
+## 🛠 Step 1: Manual Deployment (The "How-To")
+*Run these commands to understand the underlying infrastructure components.*
 
-🏗 Architecture Overview
-
-Internet
-↓
-Firewall (Allow TCP 80)
-↓
-Public Subnet
-↓
-VM (Ubuntu 22.04 + Nginx)
-↓
-“Hello from ds!”
-
-🧠 Prerequisites
-
-Google Cloud Project
-
-gcloud SDK installed
-
-Gemini CLI installed
-
-Compute Engine API enabled
+### 1. Create the VPC
+```bash
+gcloud compute networks create ds-vpc --subnet-mode=custom
