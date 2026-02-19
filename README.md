@@ -34,10 +34,4 @@ Before starting, ensure you have:
 * [ ] **Compute Engine API** enabled.
 
 ---
-
-## 🛠 Step 1: Manual Deployment (The "How-To")
-*Run these commands to understand the underlying infrastructure components.*
-
-### 1. Create the VPC
-```bash
-gcloud compute networks create ds-vpc --subnet-mode=custom
+ 
